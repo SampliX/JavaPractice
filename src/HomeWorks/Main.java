@@ -3,6 +3,8 @@ package HomeWorks;
 import HomeWorks.Practice1.MainPractice1;
 import HomeWorks.Practice2.MainPractice2;
 import HomeWorks.Practice3.MainPractice3;
+import HomeWorks.Practice6.MainPractice6;
+import HomeWorks.Practice78.MainPractice7;
 
 import javax.swing.*;
 import java.util.Scanner;
@@ -38,6 +40,14 @@ public class Main
                     case(3):
                         MainPractice3 mainPractice3 = new MainPractice3();
                         mainPractice3.practice3(WorkNumber);
+                        break;
+                    case(6):
+                        MainPractice6 mainPractice6 = new MainPractice6();
+                        mainPractice6.practice6(WorkNumber);
+                        break;
+                    case(7):
+                        MainPractice7 mainPractice7 = new MainPractice7();
+                        mainPractice7.work();
                         break;
                     default:
                         System.out.println("Данной практической работы не существует либо она ещё не выполнена, попробуйте ввести другое значение: ");

@@ -1,4 +1,4 @@
-package HomeWorks.Practice5;
+package HomeWorks.Practice45;
 
 public class Rectangle extends Shape
 {
