@@ -30,7 +30,7 @@ public class Company
                 break;
         }
     }
-    public void hireAll(String employeePos, int amount, List<Employee> employees)
+    /*public void hireAll(String employeePos, int amount, List<Employee> employees)
     {
         for (int i = 0; i < amount; i++) {
             switch (employeePos) {
@@ -49,7 +49,7 @@ public class Company
             }
         }
         System.out.println(amount + " employees hired.");
-    }
+    } */
 
     void fire(String name, List<Employee> employees)
     {

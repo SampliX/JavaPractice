@@ -10,7 +10,7 @@ public class MainPractice7
     Employee e = new Employee();
     Company company = new Company();
 
-    public void work()
+    /* public void work()
     {
         company.hireAll("Manager", 100, employees);
         company.hireAll("Operator", 10, employees);
@@ -23,5 +23,5 @@ public class MainPractice7
             System.out.println();
         }
         employees.clear();
-    }
+    } */
 }
