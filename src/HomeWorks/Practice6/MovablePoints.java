@@ -2,7 +2,7 @@ package HomeWorks.Practice6;
 
 public class MovablePoints implements Moveble
 {
-    protected double x,y;
+    public double x,y;
     @Override
     public void speedCheck() {
         if(x==y){
