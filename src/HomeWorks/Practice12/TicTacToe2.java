@@ -28,7 +28,7 @@ public class TicTacToe2 extends JFrame
     private boolean win = false;
     private int[][] a = new int[3][3];
     private JButton[][] butt = new JButton[][]{{button2, button5, button8},{button3,button6, button9},{button4, button7, button10}};
-    private int x, y, it = 0;
+    private int it = 0;
     private int player = 1;
     private byte playerX, playerY, playerXY, playerYX;
 
@@ -42,64 +42,55 @@ public class TicTacToe2 extends JFrame
         button2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                x = 0; y = 0;
-                TicTac(button2, x, y);
+                TicTac(button2, 0, 0);
             }
         });
         button5.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                x = 1; y = 0;
-                TicTac(button5, x, y);
+                TicTac(button5, 1, 0);
             }
         });
         button8.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                x = 2; y = 0;
-                TicTac(button8, x, y);
+                TicTac(button8, 2, 0);
             }
         });
         button3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                x = 0; y = 1;
-                TicTac(button3, x, y);
+                TicTac(button3, 0, 1);
             }
         });
         button6.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                x = 1; y = 1;
-                TicTac(button6, x, y);
+                TicTac(button6, 1, 1);
             }
         });
         button9.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                x = 2; y = 1;
-                TicTac(button9, x, y);
+                TicTac(button9, 2, 1);
             }
         });
         button4.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                x = 0; y = 2;
-                TicTac(button4, x, y);
+                TicTac(button4, 0, 2);
             }
         });
         button7.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                x = 1; y = 2;
-                TicTac(button7, x, y);
+                TicTac(button7, 1, 2);
             }
         });
         button10.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                x = 2; y = 2;
-                TicTac(button10, x, y);
+                TicTac(button10, 2, 2);
             }
         });
         button1.addActionListener(new ActionListener() {
@@ -165,10 +156,10 @@ public class TicTacToe2 extends JFrame
     {
         int b;
         if(it > 2)
-        for(int y = 0; y < 3; y++)
+        for(int x = 0; x < 3; x++)
         {
             b = -1;
-            for(int x = 0; x < 3; x++)
+            for(int y = 0; y < 3; y++)
             {
                 if(x == 0 && a[x][y] + a[x+1][y] + a[x+2][y] == 2)
                 {
@@ -210,7 +201,16 @@ public class TicTacToe2 extends JFrame
         }
         else
         {
-
+            if(a[1][1] == 0)
+            {
+                butt[1][1].setText("o");
+                a[1][1] = 10;
+            }
+            else
+            {
+                butt[2][2].setText("o");
+                a[2][2] = 10;
+            }
         }
     }
 
