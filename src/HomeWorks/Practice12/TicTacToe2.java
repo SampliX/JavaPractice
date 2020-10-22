@@ -129,10 +129,9 @@ public class TicTacToe2 extends JFrame
             player = 1;
             it++;
             btn.setText("x");
-            a[x][y] = 1;
+            a[x][y] = player;
             textArea1.append(Integer.toString(it) + " ход: Ходит первый игрок\n");
             SearchWinner();
-            textArea2.setText("");
 
             if(!win)
             {
@@ -141,14 +140,6 @@ public class TicTacToe2 extends JFrame
                 textArea1.append(Integer.toString(it) + " ход: Ходит бот\n");
                 SearchMove();
                 SearchWinner();
-                for(int i = 0; i < 3; i++)
-                {
-                    for(int k = 0; k < 3; k++)
-                    {
-                        textArea2.append(Integer.toString(a[i][k]) + " ");
-                    }
-                    textArea2.append("\n");
-                }
             }
         }
     }
@@ -172,7 +163,6 @@ public class TicTacToe2 extends JFrame
     }
     public void SearchStolbec(int b,int x, int y)
     {
-        textArea1.append("stolbec\n");
         if(a[0][y] == 0)
             b = 0;
         else if(a[1][y] == 0)
@@ -202,15 +192,24 @@ public class TicTacToe2 extends JFrame
                 for(int y = 0; y < 3; y++)
                 {
                     if (y == 0 && a[x][y] + a[x][y + 1] + a[x][y + 2] == 20) {
-                        textArea1.append("strokaWin\n");
                         SearchStroka(b, x, y);
                         x = 3;
                         y = 3;
                     } else if (x == 0 && a[x][y] + a[x + 1][y] + a[x + 2][y] == 20) {
-                        textArea1.append("stolbecWin\n");
                         SearchStolbec(b, x, y);
                         x = 3;
                         y = 3;
+                    }
+                    else if (x == 2 && y == 0 && a[x-1][y+1] + a[x][y] == 2)
+                    {
+                        if(it == 4)
+                        {
+                            butt[0][0].setText("o");
+                            a[0][0] = 10;
+                            x = 3;
+                            y = 3;
+                            check = true;
+                        }
                     }
                     else if (x == 2 && y == 0 && a[x-1][y+1] + a[x][y] + a[x - 2][y + 2] == 12)
                     {
@@ -235,21 +234,18 @@ public class TicTacToe2 extends JFrame
                     {
                         if(y == 0 && a[x][y] + a[x][y+1] + a[x][y+2] == 2)
                         {
-                            textArea1.append("stroka\n");
                             SearchStroka(b,x,y);
                             x = 3;
                             y = 3;
                         }
                         else if(x == 0 && a[x][y] + a[x+1][y] + a[x+2][y] == 2)
                         {
-                            textArea1.append("stolbec\n");
                             SearchStolbec(b,x,y);
                             x = 3;
                             y = 3;
                         }
                         else if(x == 0 && y == 0 && a[x][y] + a[x+1][y+1] + a[x+2][y+2] == 2)
                         {
-                            textArea1.append("diagonal\n");
                             if(a[0][0] == 0)
                                 b = 0;
                             else if(a[1][1] == 0)
