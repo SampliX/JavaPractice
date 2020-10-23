@@ -134,7 +134,8 @@ public class MyForm extends JFrame
         button4.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(textArea1.toString() != "" && Second == Double.MAX_VALUE && Sign != 'e')
+                String a = textArea1.getText();
+                if(a.length() != 0 && Second == Double.MAX_VALUE && Sign != 'e')
                 {
                     Second = Double.parseDouble(textArea1.getText());
                     textArea1.setText("");
@@ -196,7 +197,8 @@ public class MyForm extends JFrame
 
     private void SaveFirst(JButton g)
     {
-        if(textArea1.toString() != "" && First == Double.MAX_VALUE && Sign == 'e')
+        String a = textArea1.getText();
+        if(a.length() != 0 && First == Double.MAX_VALUE && Second == Double.MAX_VALUE && Sign == 'e')
         {
             First = Double.parseDouble(textArea1.getText());
             textArea1.setText("");
@@ -204,12 +206,6 @@ public class MyForm extends JFrame
             Sign = Line.charAt(0);
             Line = "";
         }
-    }
-
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
-
-
     }
 
     public static void main(String[] args) {

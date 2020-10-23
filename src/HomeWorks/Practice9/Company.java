@@ -13,7 +13,7 @@ public class Company
     public void hireEmployee()
     {
         Employee employee = new Employee();
-        workers.add(new Employee(employee.ChoiceFirstName(), employee.ChoiceSecondName(), data = new GregorianCalendar(2000 - rnd.nextInt(58), rnd.nextInt(12), rnd.nextInt(28)), "г. Москва, ул. Первомайская, 114" , "+7 993 567 15 " + (99 - rnd.nextInt(89)),rnd.nextInt(54069), ""));
+        workers.add(new Employee(employee.ChoiceFirstName(), employee.ChoiceSecondName(), new GregorianCalendar(2000 - rnd.nextInt(58), rnd.nextInt(12), rnd.nextInt(28)), "г. Москва, ул. Первомайская, 114" , "+7 993 567 15 " + (99 - rnd.nextInt(89)),rnd.nextInt(54069), ""));
     }
     public void fireEmployee(int idEmployee)
     {

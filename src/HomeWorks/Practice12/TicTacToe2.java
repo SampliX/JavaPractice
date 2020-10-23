@@ -129,6 +129,7 @@ public class TicTacToe2 extends JFrame
             player = 1;
             it++;
             btn.setText("x");
+            btn.setEnabled(false);
             a[x][y] = player;
             textArea1.append(Integer.toString(it) + " ход: Ходит первый игрок\n");
             SearchWinner();

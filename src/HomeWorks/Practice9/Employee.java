@@ -16,7 +16,16 @@ public class Employee
     Random rnd = new Random();
 
     public Employee() { }
-    public Employee(String firstName, String secondName, Calendar data, String address, String telephoneNumber, int salary, String position) { }
+    public Employee(String firstName, String secondName, Calendar data, String address, String telephoneNumber, int salary, String position)
+    {
+        this.firstName = firstName;
+        this.secondName = secondName;
+        this.data = data;
+        this.address = address;
+        this.telephoneNumber = telephoneNumber;
+        this.salary = salary;
+        this.position = position;
+    }
 
     public void setEmployeeSalary(int salary1)
     {
