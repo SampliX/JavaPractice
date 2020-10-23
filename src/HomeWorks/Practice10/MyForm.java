@@ -11,6 +11,7 @@ public class MyForm extends JFrame
     private double Second = Double.MAX_VALUE;
     private String Line;
     private char Sign = 'e';
+    private boolean error = false;
 
     private JPanel MyForm;
     private JButton a1Button;
@@ -73,6 +74,7 @@ public class MyForm extends JFrame
                 textArea1.setText("");
                 First = Double.MAX_VALUE;
                 Second = Double.MAX_VALUE;
+                error = false;
                 Sign = 'e';
 
             }
@@ -174,7 +176,12 @@ public class MyForm extends JFrame
         button3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                textArea1.append(".");
+                String a = textArea1.getText();
+                if(!error && a.length() > 0)
+                {
+                    textArea1.append(".");
+                    error = true;
+                }
             }
         });
         button11.addActionListener(new ActionListener() {
@@ -205,6 +212,7 @@ public class MyForm extends JFrame
             Line = g.getText();
             Sign = Line.charAt(0);
             Line = "";
+            error = false;
         }
     }
 
