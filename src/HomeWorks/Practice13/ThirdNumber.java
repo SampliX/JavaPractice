@@ -20,9 +20,11 @@ public class ThirdNumber
                 it++;
                 aLine += line.charAt(i);
             }
+            else if(line.charAt(i) != '-' || line.charAt(i) != '(' || line.charAt(i) != ')' || line.charAt(i) != '-')
+                check = true;
         }
 
-        if(it == 10)
+        if(it == 10 && !check)
         {
             endLine = "+" + 7 +
                     " (" + aLine.charAt(0) + aLine.charAt(1) + aLine.charAt(2) + ") " +
@@ -31,7 +33,7 @@ public class ThirdNumber
                     aLine.charAt(8) + aLine.charAt(9);
             System.out.println(endLine);
         }
-        else if (it == 11 && (aLine.charAt(0) == '7' || aLine.charAt(0) == '8'))
+        else if (it == 11 && (aLine.charAt(0) == '7' || aLine.charAt(0) == '8') && !check)
         {
             endLine = "+" + 7 +
                     " (" + aLine.charAt(1) + aLine.charAt(2) + aLine.charAt(3) + ") " +
