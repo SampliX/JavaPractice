@@ -9,7 +9,6 @@ import java.util.Random;
 
 public class TicTacToe2 extends JFrame
 {
-    private JFrame MyForm;
     private JPanel rootPanel;
     private JButton button1;
     private JButton button2;
@@ -22,7 +21,6 @@ public class TicTacToe2 extends JFrame
     private JButton button9;
     private JButton button10;
     private JTextArea textArea1;
-    private JTextArea textArea2;
 
     private boolean check = false;
     private Random rnd = new Random();
@@ -35,7 +33,7 @@ public class TicTacToe2 extends JFrame
     public TicTacToe2()
     {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setSize(800,600);
+        setSize(450,450);
         setContentPane(rootPanel);
         setVisible(true);
 
@@ -129,7 +127,6 @@ public class TicTacToe2 extends JFrame
             player = 1;
             it++;
             btn.setText("x");
-            btn.setEnabled(false);
             a[x][y] = player;
             textArea1.append(Integer.toString(it) + " ход: Ходит первый игрок\n");
             SearchWinner();
@@ -175,8 +172,7 @@ public class TicTacToe2 extends JFrame
         {
             butt[b][y].setText("o");
             a[b][y] = 10;
-            x = 3;
-            y = 3;
+            x = 3; y = 3;
             check = true;
         }
     }
@@ -194,34 +190,26 @@ public class TicTacToe2 extends JFrame
                 {
                     if (y == 0 && a[x][y] + a[x][y + 1] + a[x][y + 2] == 20) {
                         SearchStroka(b, x, y);
-                        x = 3;
-                        y = 3;
+                        x = 3; y = 3;
                     } else if (x == 0 && a[x][y] + a[x + 1][y] + a[x + 2][y] == 20) {
                         SearchStolbec(b, x, y);
+                        x = 3; y = 3;
+                    }
+                    else if (x == 2 && y == 0 && a[x-1][y+1] + a[x][y] == 2 && it == 4)
+                    {
+                        butt[0][0].setText("o");
+                        a[0][0] = 10;
                         x = 3;
                         y = 3;
+                        check = true;
                     }
-                    else if (x == 2 && y == 0 && a[x-1][y+1] + a[x][y] == 2)
+                    else if (x == 2 && y == 0 && a[x-1][y+1] + a[x][y] + a[x - 2][y + 2] == 12 && it == 4)
                     {
-                        if(it == 4)
-                        {
-                            butt[0][0].setText("o");
-                            a[0][0] = 10;
-                            x = 3;
-                            y = 3;
-                            check = true;
-                        }
-                    }
-                    else if (x == 2 && y == 0 && a[x-1][y+1] + a[x][y] + a[x - 2][y + 2] == 12)
-                    {
-                        if(it == 4)
-                        {
-                            butt[2][1].setText("o");
-                            a[2][1] = 10;
-                            x = 3;
-                            y = 3;
-                            check = true;
-                        }
+                        butt[2][1].setText("o");
+                        a[2][1] = 10;
+                        x = 3;
+                        y = 3;
+                        check = true;
                     }
                 }
             }
@@ -282,8 +270,7 @@ public class TicTacToe2 extends JFrame
 
         if(check == false)
         {
-            int i = rnd.nextInt(2);
-            int k = rnd.nextInt(2);
+            int i = rnd.nextInt(2), k = rnd.nextInt(2);
             while(a[i][k] != 0)
             {
                 i = rnd.nextInt(2);
@@ -311,7 +298,6 @@ public class TicTacToe2 extends JFrame
                 if ((playerX == 2) || (playerY == 2) || (playerXY == 2) || (playerYX == 2))
                 {
                     if (player == 1) textArea1.append("Первый игрок победил\n"); else textArea1.append("Второй игрок победил\n");
-
                     win = true;
                     x = 3;
                     y = 3;
@@ -326,7 +312,6 @@ public class TicTacToe2 extends JFrame
             }
         }
     }
-
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
