@@ -5,7 +5,7 @@ import java.lang.String;
 
 public class FirstNumber
 {
-    String line = "Вася заработал 5000 рублей, Петя - 7563 рубля, а Маша - 30000 рублей";
+    String line = "Вася заработал 5006 рублей, Петя - 7563 рубля, а Маша - 300 рублей";
     boolean check = false;
     String a = "";
     String number = "";
