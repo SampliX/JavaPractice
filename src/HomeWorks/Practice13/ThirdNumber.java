@@ -15,7 +15,7 @@ public class ThirdNumber
             if (line.charAt(i) > 47 && line.charAt(i) < 58) {
                 it++;
                 aLine += line.charAt(i);
-            } else if (line.charAt(i) != '-' || line.charAt(i) != '(' || line.charAt(i) != ')' || line.charAt(i) != '+')
+            } else if (line.charAt(i) != '-' || line.charAt(i) != '(' || line.charAt(i) != ')' || line.charAt(i) != '+' || line.charAt(i) != ' ')
                 check = true;
         }
         if(it == 10 && !check)
