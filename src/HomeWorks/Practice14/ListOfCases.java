@@ -39,7 +39,7 @@ public class ListOfCases
                             str += lineArr[i] + " ";
                         }
 
-                        listOfCases.add(line);
+                        listOfCases.add(str);
                     }
                     else if(lineArr.length > 2 && lineArr[1].charAt(0) >= '0' && lineArr[1].charAt(0) <= '9' && Integer.parseInt(lineArr[1].trim()) < listOfCases.size())
                     {
