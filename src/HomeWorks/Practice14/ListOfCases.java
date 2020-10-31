@@ -41,12 +41,17 @@ public class ListOfCases
 
                         listOfCases.add(str);
                     }
-                    else if(lineArr.length > 2 && lineArr[1].charAt(0) >= '0' && lineArr[1].charAt(0) <= '9' && Integer.parseInt(lineArr[1].trim()) <= listOfCases.size())
+                    else if(lineArr.length > 2 && lineArr[1].charAt(0) >= '0' && lineArr[1].charAt(0) <= '9')
                     {
                         for(int i = 2; i < lineArr.length; i++)
                             str += lineArr[i] + " ";
 
-                        listOfCases.add(Integer.parseInt(lineArr[1].trim()),str);
+                        if(Integer.parseInt(lineArr[1].trim()) >= listOfCases.size())
+                            listOfCases.add(str);
+                        else
+                            listOfCases.add(Integer.parseInt(lineArr[1].trim()),str);
+
+                        System.out.println("Добавлено");
                     }
                     else
                         System.out.println("Неизвестная команда.");
