@@ -41,7 +41,7 @@ public class ListOfCases
 
                         listOfCases.add(str);
                     }
-                    else if(lineArr.length > 2 && lineArr[1].charAt(0) >= '0' && lineArr[1].charAt(0) <= '9' && Integer.parseInt(lineArr[1].trim()) < listOfCases.size())
+                    else if(lineArr.length > 2 && lineArr[1].charAt(0) >= '0' && lineArr[1].charAt(0) <= '9' && Integer.parseInt(lineArr[1].trim()) <= listOfCases.size())
                     {
                         for(int i = 2; i < lineArr.length; i++)
                             str += lineArr[i] + " ";
@@ -52,7 +52,7 @@ public class ListOfCases
                         System.out.println("Неизвестная команда.");
                     break;
                 case("EDIT"):
-                    if(lineArr.length > 2 && lineArr[1].charAt(0) >= '0' && lineArr[1].charAt(0) <= '9'&& Integer.parseInt(lineArr[1].trim()) < listOfCases.size())
+                    if(lineArr.length > 2 && lineArr[1].charAt(0) >= '0' && lineArr[1].charAt(0) <= '9'&& Integer.parseInt(lineArr[1].trim()) <= listOfCases.size())
                     {
                         for(int i = 2; i < lineArr.length; i++)
                             str += lineArr[i] + " ";
@@ -64,7 +64,7 @@ public class ListOfCases
                         System.out.println("Неизвестная команда.");
                     break;
                 case("DELETE"):
-                    if (lineArr.length == 2 && lineArr[1].charAt(0) >= '0' && lineArr[1].charAt(0) <= '9' && Integer.parseInt(lineArr[1].trim()) < listOfCases.size())
+                    if (lineArr.length == 2 && lineArr[1].charAt(0) >= '0' && lineArr[1].charAt(0) <= '9' && Integer.parseInt(lineArr[1].trim()) <= listOfCases.size())
                         listOfCases.remove(Integer.parseInt(lineArr[1].trim()));
                     else
                         System.out.println("Неизвестная команда.");

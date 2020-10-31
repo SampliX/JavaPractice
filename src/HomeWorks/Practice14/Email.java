@@ -16,11 +16,11 @@ public class Email
         String line;
         boolean error = false;
         Pattern pattern;
-        pattern = Pattern.compile("^([a-z0-9_\\.-]+(?:\\.[a-z0-9]+)@([a-z0-9_\\.-]+)\\.[a-z]{2,6}$)");
+        pattern = Pattern.compile("^([A-Za-z0-9]{1,}[\\\\.-]{0,1}[A-Za-z0-9]{1,})+@([A-Za-z0-9]{1,}[\\\\.-]{0,1}[A-Za-z0-9]{1,})+[\\\\.]{1}[a-z]{2,4}$");
         Matcher matcher;
 
-        emails.add("jhgj");
-        emails.add("gfjhg");
+        emails.add("jhgj@gmail.com");
+        emails.add("gfjh@yandex.ru");
 
         System.out.println("Для выхода из программы введите - EXIT");
 
@@ -40,9 +40,12 @@ public class Email
                     matcher = pattern.matcher(lineArr[1]);
                     boolean found = matcher.matches();
                     if (found)
+                    {
                         emails.add(lineArr[1]);
+                        System.out.println("Добавлено");
+                    }
                     else
-                        System.out.println("Неизвестная команда.");
+                        System.out.println("Неверный ввод.");
                     break;
                 default:
                     System.out.println("Неизвестная команда.");
