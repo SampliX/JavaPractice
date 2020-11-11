@@ -9,7 +9,6 @@ public class WorkWithFiles1
     {
         if(oldFolder.isFile())
         {
-            System.out.println("file");
             InputStream inputStream = null;
             OutputStream outputStream = null;
 
@@ -32,21 +31,21 @@ public class WorkWithFiles1
         }
         else if(oldFolder.isDirectory())
         {
-            System.out.println("folder");
-            String[] children = oldFolder.list();
-            for (int i=0; i<children.length; i++)
-                copyFiles(new File(oldFolder, children[i]), new File(newFolder, children[i]));
+            String[] tree = oldFolder.list();
+            for (int i=0; i< tree.length; i++)
+                copyFiles(new File(oldFolder, tree[i]), new File(newFolder, tree[i]));
         }
-        System.out.println("gvjh");
-
-        if(!oldFolder.exists())
+        else
         {
-            System.out.println("Начальная директория не существует");
-        }
+            if(!oldFolder.exists())
+            {
+                System.out.println("Начальная директория не существует");
+            }
 
-        if(!newFolder.exists())
-        {
-            System.out.println("Конечная директория не существует");
+            if(!newFolder.exists())
+            {
+                System.out.println("Конечная директория не существует");
+            }
         }
     }
 
