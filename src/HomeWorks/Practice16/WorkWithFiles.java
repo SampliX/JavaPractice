@@ -20,28 +20,33 @@ public class WorkWithFiles
             System.out.print("Введите путь до папки: ");
             path = read.nextLine();
             File folder = new File(path);
-            double result = getFolderSize(folder);
+            if(folder.exists()) {
+                double result = getFolderSize(folder);
 
-            while (result > 1024)
-            {
-                result /= 1024;
-                it++;
+                while (result > 1024) {
+                    result /= 1024;
+                    it++;
+                }
+
+                if (it == 0)
+                    line = " byte ";
+                else if (it == 1)
+                    line = " Kb ";
+                else if (it == 2)
+                    line = " Mb ";
+                else if (it >= 3)
+                    line = " Gb ";
+
+                System.out.print("Её размер: ");
+                System.out.format("%.1f", result);
+                System.out.print(line);
+
+                appendLogs(new Date().toString() + " - " + "folder: " + path + ", size: " + result + line + "\r");
             }
-
-            if (it == 0)
-                line = " byte ";
-            else if (it == 1)
-                line = " Kb ";
-            else if (it == 2)
-                line = " Mb ";
-            else if (it >= 3)
-                line = " Gb ";
-
-            System.out.print("Её размер: ");
-            System.out.format("%.1f",result);
-            System.out.print(line);
-
-            appendLogs(new Date().toString() + " - " + "folder: " + path + ", size: " + result + line + "\r");
+            else
+            {
+                System.out.println("Данной папки не существует");
+            }
         }
         catch (Exception ex)
         {
@@ -69,9 +74,13 @@ public class WorkWithFiles
     {
         String logPath = "Logs\\log.txt";
 
-        FileOutputStream outputStream = new FileOutputStream(logPath, true);
+        if(!new File("Logs").exists())  {
+            File file = new File("Logs");
+            file.mkdirs();
+        }
+            FileOutputStream outputStream = new FileOutputStream(logPath, true);
 
-        outputStream.write(input.getBytes());
-        outputStream.close();
+            outputStream.write(input.getBytes());
+            outputStream.close();
     }
 }
