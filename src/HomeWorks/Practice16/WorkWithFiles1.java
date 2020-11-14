@@ -31,6 +31,9 @@ public class WorkWithFiles1
         }
         else if(oldFolder.isDirectory())
         {
+            if(!newFolder.exists())
+                newFolder.mkdirs();
+
             String[] tree = oldFolder.list();
             for (int i=0; i< tree.length; i++)
                 copyFiles(new File(oldFolder, tree[i]), new File(newFolder, tree[i]));
@@ -40,11 +43,6 @@ public class WorkWithFiles1
             if(!oldFolder.exists())
             {
                 System.out.println("Начальная директория не существует");
-            }
-
-            if(!newFolder.exists())
-            {
-                System.out.println("Конечная директория не существует");
             }
         }
     }
