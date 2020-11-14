@@ -56,12 +56,12 @@ public class WorkWithFiles1
         System.out.print("Введите начальную директорию: ");
         String oldFolder = read.nextLine();
 
-        appendLogs(new Date().toString() + " -  Initial directory: " + oldFolder + "\r");
+        appendLogs(new Date().toString() + " - Initial directory: " + oldFolder + "\r");
 
         System.out.print("Введите конечную директорию: ");
         String newFolder = read.nextLine();
 
-        appendLogs(new Date().toString() + " -  Destination directory: " + newFolder + "\r");
+        appendLogs(new Date().toString() + " - Destination directory: " + newFolder + "\r");
 
         copyFiles(new File(oldFolder),new File(newFolder));
 
