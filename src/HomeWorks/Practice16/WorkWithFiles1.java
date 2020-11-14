@@ -1,6 +1,7 @@
 package HomeWorks.Practice16;
 
 import java.io.*;
+import java.util.Date;
 import java.util.Scanner;
 
 public class WorkWithFiles1
@@ -43,6 +44,7 @@ public class WorkWithFiles1
             if(!oldFolder.exists())
             {
                 System.out.println("Начальная директория не существует");
+                appendLogs(new Date().toString() + " - " + oldFolder.getPath() + " - This folder does not exist" + "\r");
             }
         }
     }
@@ -51,12 +53,32 @@ public class WorkWithFiles1
     {
         Scanner read = new Scanner(System.in);
 
-        System.out.println("Введите начальную директорию");
+        System.out.print("Введите начальную директорию: ");
         String oldFolder = read.nextLine();
 
-        System.out.println("Введите конечную директорию");
+        appendLogs(new Date().toString() + " -  Initial directory: " + oldFolder + "\r");
+
+        System.out.print("Введите конечную директорию: ");
         String newFolder = read.nextLine();
 
+        appendLogs(new Date().toString() + " -  Destination directory: " + newFolder + "\r");
+
         copyFiles(new File(oldFolder),new File(newFolder));
+
+        appendLogs(new Date().toString() + " - The copy was successful " + "\r");
+    }
+
+    public static void appendLogs(String input) throws IOException
+    {
+        String logPath = "Logs\\log.txt";
+
+        if(!new File("Logs").exists())  {
+            File file = new File("Logs");
+            file.mkdirs();
+        }
+        FileOutputStream outputStream = new FileOutputStream(logPath, true);
+
+        outputStream.write(input.getBytes());
+        outputStream.close();
     }
 }

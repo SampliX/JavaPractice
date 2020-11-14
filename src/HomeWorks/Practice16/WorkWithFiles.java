@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class WorkWithFiles
 {
-    public static void main(String[] args)
+    public static void main(String[] args) throws IOException
     {
         int it = 0;
         String line = "";
@@ -19,8 +19,12 @@ public class WorkWithFiles
         {
             System.out.print("Введите путь до папки: ");
             path = read.nextLine();
+
+            appendLogs(new Date().toString() + " - The path to the file: " + path + "\r");
+
             File folder = new File(path);
-            if(folder.exists()) {
+            if(folder.exists())
+            {
                 double result = getFolderSize(folder);
 
                 while (result > 1024) {
@@ -46,11 +50,13 @@ public class WorkWithFiles
             else
             {
                 System.out.println("Данной папки не существует");
+                appendLogs(new Date().toString() + " - " + path + " - This folder does not exist" + "\r");
             }
         }
         catch (Exception ex)
         {
             System.out.println(ex.toString());
+            appendLogs(new Date().toString() + " - The program terminated with an error: " + ex.toString() + "\r");
         }
     }
 
