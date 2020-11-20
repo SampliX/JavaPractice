@@ -10,22 +10,57 @@ public class BankStatement
     {
         int it = 2;
         String line = " ";
+        double revenue = 0;
+        double cost = 0;
+        boolean flag = false;
 
         try
         {
             ArrayList<Statement> statementList = new ArrayList<Statement>();
+            ArrayList<InformationOfCompanys> informationOfCompanys = new ArrayList<InformationOfCompanys>();
             File file = new File("Data\\movementList.csv");
             FileReader fileReader = new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
 
             line = bufferedReader.readLine();
-            do {
+            while(it < 121)
+            {
                 line = bufferedReader.readLine();
                 statementList.add(new Statement(line));
-                it++;
-            } while(line != null);
 
-            System.out.println(statementList.get(8));
+                revenue += statementList.get(it-2).revenue;
+                cost += statementList.get(it-2).cost;
+
+                it++;
+            }
+
+            informationOfCompanys.add(new InformationOfCompanys(statementList.get(0).descriptionOperations, statementList.get(0).cost));
+
+            for(int i = 0; i < statementList.size(); i++)
+            {
+                for(int k = 0; k < informationOfCompanys.size(); k++)
+                {
+                    if (statementList.get(i).descriptionOperations.equals(informationOfCompanys.get(k).company))
+                    {
+                        informationOfCompanys.get(k).cost += statementList.get(i).cost;
+                        flag = true;
+                        break;
+                    }
+                }
+                if(flag == false && statementList.get(i).cost != 0)
+                {
+                    informationOfCompanys.add(new InformationOfCompanys(statementList.get(i).descriptionOperations, statementList.get(i).cost));
+                }
+                flag = false;
+            }
+
+            System.out.println("Прибыль: " + revenue);
+            System.out.println("Убыль: " + cost);
+
+            for(int i = 0; i < informationOfCompanys.size(); i++)
+            {
+                informationOfCompanys.get(i).WriteInfo();
+            }
         }
         catch (Exception ex)
         {
