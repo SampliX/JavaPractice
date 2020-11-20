@@ -19,8 +19,14 @@ public class htmlWork
             Elements img = doc.select("img");
             for (Element el : img) {
                 addresses.add(el.absUrl("src"));
-                downloadImg(el.absUrl("src"));
+                String src = el.attr("abs:src");
+                if (src.equals(""))
+                    src = el.attr("abs:data-src");
+                downloadImg(src);
             }
+
+            for(int i = 0; i < addresses.size(); i++)
+                downloadImg(addresses.get(i));
 
             System.out.println(img);
         }
@@ -31,29 +37,32 @@ public class htmlWork
     }
     public static void downloadImg(String src) throws Exception
     {
-        String folder = null;
-
-        int indexname = src.lastIndexOf("/");
-
-        if (indexname == src.length()) {
-            src = src.substring(1, indexname);
+        String strImageName = "";
+        for (int i = src.length()-1; i>=0;i--)
+            if (src.charAt(i)=='/')
+            {
+                for (int j = i+1; j<src.length();j++)
+                {
+                    if (src.charAt(j) == '?')
+                        break;
+                    strImageName += src.charAt(j);
+                }
+                break;
+            }
+        URL urlImage = new URL(src);
+        InputStream in = urlImage.openStream();
+        byte[] buffer = new byte[4096];
+        int n = -1;
+        File file = new File("images");
+        if (!file.exists()) {
+            file.mkdirs();
         }
-
-        indexname = src.lastIndexOf("/");
-        String name = src.substring(indexname, src.length());
-
-        System.out.println(name);
-
-        URL url = new URL(src);
-        InputStream in = url.openStream();
-
-        OutputStream out = new BufferedOutputStream(new FileOutputStream( "images\\" + name));
-
-        for (int b; (b = in.read()) != -1;) {
-            out.write(b);
+        OutputStream os = new FileOutputStream( "images/" + strImageName );
+        while ( (n = in.read(buffer)) != -1 ){
+            os.write(buffer, 0, n);
         }
-        out.close();
-        in.close();
+        os.close();
+        System.out.println(strImageName + ";");
     }
 
 }
