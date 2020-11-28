@@ -26,13 +26,15 @@ public class ResizeImage
                 Files.createDirectories(Paths.get(dstFolder));
             }
 
-            for(int i = 0; i < files.length && Runtime.getRuntime().availableProcessors() < i; i++)
-                Runnable resize = new AsyncImageResize(files[i], dstFolder);
+            for(int i = 0; i < files.length; i++)
+            {
+                Runnable resize = new AsyncImageResize(files[i], dstFolder, start);
+                resize.run();
+            }
         }
         catch (Exception ex) {
             ex.printStackTrace();
         }
 
-        System.out.println("Duration: " + (System.currentTimeMillis() - start));
     }
 }
