@@ -39,7 +39,6 @@ public class ResizeImage
                 resize.run();
             }
 
-
             System.out.println("\n" + "Full working time: " + (System.currentTimeMillis() - testStart));
         }
         catch (Exception ex) {
@@ -58,6 +57,9 @@ public class ResizeImage
             {
                 Files.createDirectories(Paths.get(dstFolder));
             }
+
+            if(files.length < Runtime.getRuntime().availableProcessors())
+                availableProcessors = 1;
 
             for(int i = 0; i < files.length; i += availableProcessors)
             {
