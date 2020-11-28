@@ -4,13 +4,13 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
-public class AsyncImageResize implements Runnable
+public class AsyncImageResizeFisrt implements Runnable
 {
     private File file;
     private String dstFolder;
     private long start;
 
-    public AsyncImageResize(File file, String dstFolder, long start) {
+    public AsyncImageResizeFisrt(File file, String dstFolder, long start) {
         this.file = file;
         this.dstFolder = dstFolder;
         this.start = start;
