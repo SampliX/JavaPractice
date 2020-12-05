@@ -58,16 +58,23 @@ public class ResizeImage
                 Files.createDirectories(Paths.get(dstFolder));
             }
 
-            if(files.length < Runtime.getRuntime().availableProcessors())
-                availableProcessors = 1;
+            if(files.length > Runtime.getRuntime().availableProcessors())
+                for(int i = 0; i < files.length; i += availableProcessors)
+                {
+                    start = System.currentTimeMillis();
+                    System.arraycopy(files, i, partOfFiles,0, availableProcessors);
+                    Runnable resize = new AsyncImageResizeSecond(partOfFiles, dstFolder, start);
+                    resize.run();
+                }
+            else
+                for(int i = 0; i < files.length; i += 1)
+                {
+                    start = System.currentTimeMillis();
+                    System.arraycopy(files, i, partOfFiles,0, i);
+                    Runnable resize = new AsyncImageResizeSecond(partOfFiles, dstFolder, start);
+                    resize.run();
+                }
 
-            for(int i = 0; i < files.length; i += availableProcessors)
-            {
-                start = System.currentTimeMillis();
-                System.arraycopy(files, i, partOfFiles,0, availableProcessors);
-                Runnable resize = new AsyncImageResizeSecond(partOfFiles, dstFolder, start);
-                resize.run();
-            }
             System.out.println("\n" + "Full working time: " + (System.currentTimeMillis() - testStart));
         }
         catch (Exception ex)
