@@ -25,7 +25,7 @@ public class Bank implements Runnable
 
     public static void main(String[] args)
     {
-        accounts.put("Генадий", new Account(47826, "Генадий"));
+        accounts.put("Геннадий", new Account(47826, "Геннадий"));
         accounts.put("Федор", new Account(24655, "Федор"));
         accounts.put("Андрей", new Account(74225, "Андрей"));
         accounts.put("Леонид", new Account(87568, "Леонид"));
