@@ -66,14 +66,13 @@ public class ResizeImage
                     Runnable resize = new AsyncImageResizeSecond(partOfFiles, dstFolder, start);
                     resize.run();
                 }
-            else
-                for(int i = 0; i < files.length; i += 1)
-                {
-                    start = System.currentTimeMillis();
-                    System.arraycopy(files, i, partOfFiles,0, i);
-                    Runnable resize = new AsyncImageResizeSecond(partOfFiles, dstFolder, start);
-                    resize.run();
-                }
+            else {
+                start = System.currentTimeMillis();
+                partOfFiles = new File[files.length];
+                System.arraycopy(files, 0, partOfFiles, 0, files.length);
+                Runnable resize = new AsyncImageResizeSecond(partOfFiles, dstFolder, start);
+                resize.run();
+            }
 
             System.out.println("\n" + "Full working time: " + (System.currentTimeMillis() - testStart));
         }
