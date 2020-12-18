@@ -1,7 +1,6 @@
 package HomeWorks.Practice78;
 
-public interface EmployeePosition
-{
-    public String getJobTitle();
-    public double calcSalary();
+interface EmployeePosition {
+    String getJobTitle();
+    double calcSalary(double baseSalary);
 }

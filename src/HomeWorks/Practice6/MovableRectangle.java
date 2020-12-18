@@ -1,18 +1,16 @@
 package HomeWorks.Practice6;
 
-public class MovableRectangle implements Moveble
-{
-    protected double speed;
-    private double height, width;
-    MovableRectangle(double height, double width){
+class MovableRectangle implements Movable{
+    protected int speed;
+    private int height, width;
+    MovableRectangle(int height, int width){
         this.height = height;
         this.width = width;
     }
-
-    public double getWidth(){
+    public int getWidth(){
         return width;
     }
-    public double getHeight(){
+    public int getHeight(){
         return height;
     }
 
@@ -20,9 +18,9 @@ public class MovableRectangle implements Moveble
     public void speedCheck() { }
 
     @Override
-    public void setSpeed(double speed) {
+    public void setSpeed(int speed) {
         this.speed = speed;
     }
     @Override
-    public void setPoints(double x, double y){ }
+    public void setPoints(int x, int y){ }
 }

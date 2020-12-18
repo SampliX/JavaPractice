@@ -1,13 +1,12 @@
 package HomeWorks.Practice78;
 
-public class Operator implements EmployeePosition
-{
+public class Operator implements EmployeePosition{
     @Override
-    public String getJobTitle() {return "Operator";}
-
+    public String getJobTitle() {
+        return "Operator";
+    }
     @Override
-    public double calcSalary()
-    {
-        return 45000;
+    public double calcSalary(double baseSalary) {
+        return baseSalary;
     }
 }

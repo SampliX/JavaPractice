@@ -1,8 +1,7 @@
 package HomeWorks.Practice6;
 
-public class MovablePoints implements Moveble
-{
-    public double x,y;
+class MovablePoints implements Movable{
+    protected int x,y;
     @Override
     public void speedCheck() {
         if(x==y){
@@ -13,11 +12,11 @@ public class MovablePoints implements Moveble
     }
 
     @Override
-    public void setSpeed(double speed) {
+    public void setSpeed(int speed) {
 
     }
 
-    public void setPoints(double x, double y){
+    public void setPoints(int x, int y){
         this.x = x;
         this.y = y;
     }

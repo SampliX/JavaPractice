@@ -41,14 +41,6 @@ public class Main
                         MainPractice3 mainPractice3 = new MainPractice3();
                         mainPractice3.practice3(WorkNumber);
                         break;
-                    case(6):
-                        MainPractice6 mainPractice6 = new MainPractice6();
-                        mainPractice6.practice6(WorkNumber);
-                        break;
-                    case(7):
-                        /* MainPractice7 mainPractice7 = new MainPractice7();
-                        mainPractice7.work(); */
-                        break;
                     case(9):
                         MainPractice9 mainPractice9 = new MainPractice9();
                         mainPractice9.practice9(WorkNumber);
